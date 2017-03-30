@@ -1,0 +1,138 @@
+PURPLE = $$(tput setaf 93)
+YELLOW = $$(tput setaf 226)
+GREEN = $$(tput setaf 46)
+RED = $$(tput setaf 196)
+RESET = $$(tput sgr0)
+
+ASSETS = $$(find ./presentation -mindepth 1 -maxdepth 1 -type d)
+PROJECT = $$(find ./shared -mindepth 1 -maxdepth 1 -type d)
+HTML = $$(find presentation/ -name "*.html")
+JS = $$(find . -name "*.js")
+
+SHARED_RESOURCES_SUPPORT=true
+
+build:
+	@printf  "$(GREEN)--- build -----------------------------------------------\n$(RESET)"
+	@for x in $(ASSETS); do \
+		t=$$(basename $$x); \
+		echo "$(GREEN)$$t$(RESET)"; \
+		cd "presentation"; \
+		if [[ -x "$$t/build" ]]; then \
+			cd $$t; \
+			build; \
+			cd ..; \
+		fi; \
+		if [[ -f "$$t/gulpfile.js" ]]; then \
+			cd $$t; \
+			gulp; \
+			cd ..; \
+		fi; \
+		cd ..; \
+	done
+	@for x in $(PROJECT); do \
+		t=$$(basename $$x); \
+		echo "$(GREEN)$$t$(RESET)"; \
+		cd "shared";  \
+		if [[ -x "$$t/build" ]]; then \
+			cd $$t; \
+			build; \
+			cd ..; \
+		fi; \
+		if [[ -f "$$t/gulpfile.js" ]]; then \
+			cd $$t; \
+			gulp; \
+			cd ..; \
+		fi; \
+		cd ..; \
+	done
+
+serve:
+	sleep 1 && open "http://localhost:8000/";
+	cd "presentation" && python -m SimpleHTTPServer;
+
+zip: build
+	@printf  "$(GREEN)--- zip  --------------------------------------------\n$(RESET)"
+	@if [[ ! -d "zip" ]]; then \
+		mkdir zip; \
+	fi
+	@for x in $(ASSETS); do \
+		t=$$(basename $$x); \
+		echo "$(GREEN)$$t$(RESET)"; \
+		cd "presentation"; \
+		if [ "$(SHARED_RESOURCES_SUPPORT)" = true ] ; then \
+			if [[ -f "$$t/exclude.lst" ]]; then \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+			else \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+			fi; \
+		else \
+			if [[ -f "$$t/exclude.lst" ]]; then \
+				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+			else \
+				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+			fi; \
+		fi; \
+		cd ..; \
+	done
+	@for x in $(PROJECT); do \
+		t=$$(basename $$x); \
+		echo "$(GREEN)$$t$(RESET)"; \
+		cd "shared";  \
+		if [ "$(SHARED_RESOURCES_SUPPORT)" = true ] ; then \
+			if [[ -f "$$t/exclude.lst" ]]; then \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+			else \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+			fi; \
+		else \
+			if [[ -f "$$t/exclude.lst" ]]; then \
+				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+			else \
+				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+			fi; \
+		fi; \
+		cd ..; \
+	done
+
+install: update
+	@printf "$(PURPLE)--- install ---------------------------------------------\n$(RESET)"
+	@if [[ -d "shared/project" ]]; then \
+		read -p "$(YELLOW)Project Name [sample-project]:$(RESET) " projectname; \
+		projectname=$${projectname:-sample-project}; \
+		mv "shared/project" "shared/$$projectname"; \
+		for x in $(HTML); do \
+			sed -i'' "s/shared\/project/shared\/$$projectname/g" "$$x"; \
+		done; \
+		for x in $(JS); do \
+			sed -i'' "s/com\.project/com\.$${projectname//-}/g" "$$x"; \
+		done; \
+	fi;
+	@for x in $(PROJECT); do \
+		t=$$(basename $$x); \
+		cd "shared/$$t"; \
+		if [[ ! -d "framework" ]]; then \
+			git submodule add https://jamestomasino@bitbucket.org/jamestomasino/veeva-framework.git framework; \
+		fi; \
+		cd ../..; \
+	done;
+	@for x in $(ASSETS); do \
+		if [[ ! -L "$$x/shared" ]]; then \
+			ln -s ../../shared/ "$$x/shared"; \
+		fi; \
+	done
+
+update:
+	git submodule init
+	git submodule update --remote
+
+clean:
+	@printf    "$(RED)--- clean -----------------------------------------------\n$(RESET)"
+	for x in $(ASSETS); do \
+		if [[ -L "$$x/shared" ]]; then \
+			unlink "$$x/shared"; \
+		fi \
+	done
+	rm -rf zip
+	rm -rf *.zip
+
+.PHONY: install build zip update clean serve

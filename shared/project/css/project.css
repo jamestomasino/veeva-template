@@ -1,0 +1,161 @@
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1024px;
+    height: 768px;
+    overflow: hidden;
+    background-image: url("../images/background.png");
+    background-size: 1024px 768px;
+    background-repeat: no-repeat;
+}
+
+/* ISI Scroll */
+.main .isi {
+    position: absolute;
+    top: 609px;
+    right: 3px;
+    width: 750px;
+    height: 96px;
+    background-image: url("../images/isi-scroll.png");
+    background-size: 750px 920px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+    .main .isi.s0 {
+        background-position: 0 0;
+    }
+
+    .main .isi.s1 {
+        background-position: 0 -115px;
+    }
+
+    .main .isi.s2 {
+        background-position: 0 -230px;
+    }
+
+    .main .isi.s3 {
+        background-position: 0 -345px;
+    }
+
+    .main .isi.s4 {
+        background-position: 0 -460px;
+    }
+
+    .main .isi.s5 {
+        background-position: 0 -575px;
+    }
+
+    .main .isi.s6 {
+        background-position: 0 -690px;
+    }
+
+    .main .isi.s7 {
+        background-position: 0 -805px;
+    }
+
+.footer .btn-references {
+    position: absolute;
+    bottom: 0;
+    left: 628px;
+    width: 110px;
+    height: 37px;
+}
+
+.footer .btn-footnotes {
+    position: absolute;
+    bottom: 0;
+    left: 739px;
+    width: 101px;
+    height: 36px;
+}
+
+    .footer .btn-footnotes.active {
+        background-image: url("../images/footnotes-active.png");
+        background-size: 102px 36px;
+        background-repeat: no-repeat;
+    }
+
+.footer .btn-isi {
+    position: absolute;
+    bottom: 0;
+    left: 842px;
+    width: 55px;
+    height: 37px;
+}
+
+.footer .btn-pi {
+    position: absolute;
+    bottom: 0;
+    left: 898px;
+    width: 76px;
+    height: 37px;
+}
+
+.footer .btn-text-pi {
+    position: absolute;
+    bottom: 36px;
+    left: 448px;
+    width: 176px;
+    height: 33px;
+}
+
+/* Full ISI Slide-up */
+.full-isi {
+    position: absolute;
+    top: 1024px;
+    left: 0;
+    width: 1024px;
+    height: 768px;
+    background-image: url("../images/isi.png");
+    background-size: 1024px 768px;
+    background-repeat: no-repeat;
+    z-index: 5000;
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
+
+    .full-isi.active {
+      -webkit-transform: translate(0, -1024px);
+      transform: translate(0,-1024px);
+    }
+
+    .full-isi .btn-text-pi {
+        position: absolute;
+        bottom: 165px;
+        left: 626px;
+        width: 176px;
+        height: 33px;
+    }
+
+    .full-isi .job-number {
+        position: absolute;
+        bottom: 32px;
+        left: 540px;
+        width: 176px;
+        height: 17px;
+        font-family: AvenirNextCondensed-Regular;
+        font-size: 12px;
+        color: #000;
+    }
+
+    .full-isi .close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 66px;
+        height: 66px;
+    }
+
+/* Top Logo */
+.logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 125px;
+    z-index: 1002;
+}
+
+/* vi: set shiftwidth=4 tabstop=4 expandtab: */
