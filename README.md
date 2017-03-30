@@ -71,6 +71,14 @@ Locate the following line in `Makefile` to adjust:
 	SHARED_RESOURCES_SUPPORT=true
 ```
 
+#### Presentation Structure
+
+After installation your project will have a shared resource project folder located within the `shared` folder. In this folder will be `./js/project.js`. Editing this file reveals some project level configuration.
+
+Near the top of this file you will find `presentationStructure`, an object that associates your local Slides and Presentation with your settings in Salesforce. Match up the presentation values with those of your Presentation in Salesforce. For each Slide, in order of appearance in your presentation, give a short `id`, a `keyMessage` value that matches that of the zip you will upload, and optionally a `jobCode` which can be used for display.
+
+Without this section configured, some of the Veeva framework built in navigation functions will not operate correctly. Warnings will be provided in the console for incorrect configuration.
+
 ## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature
