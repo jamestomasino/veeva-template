@@ -1,8 +1,4 @@
-var com;
-if (com === null) com = {};
-if (com.project == undefined) com.project = {};
-
-com.project.clm = {
+ns('com.project.clm').extend({
     VERSION: "0.0.1",
     DEBUG: true,
     _currentISI: 0,
@@ -106,7 +102,7 @@ com.project.clm = {
         com.project.clm.log ("Override this method for asset init");
     }
 
-};
+});
 
 $( document ).ready(function() {
     org.tomasino.clm.initialize();

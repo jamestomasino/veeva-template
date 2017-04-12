@@ -1,9 +1,4 @@
-var com;
-if (com === null) com = {};
-if (com.project == undefined) com.project = {};
-if (com.project.clm == undefined) com.project.clm = {};
-
-com.project.clm.help = {
+ns('com.project.clm.help').extend({
 
     initialize : function (modes) {
         var helpBtn = $('.btn-help');
@@ -180,6 +175,6 @@ com.project.clm.help = {
             helpBtnNav.removeClass().addClass('help-btn-nav ' + helpButtonMode);
         }
     }
-};
+});
 
 /* vi: set shiftwidth=4 tabstop=4 expandtab: */
