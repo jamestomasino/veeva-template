@@ -1,4 +1,4 @@
-ns('com.project.clm').extend({
+ns('com.project.clm').modify({
     VERSION: "0.0.1",
     DEBUG: true,
     _currentISI: 0,

@@ -1,4 +1,4 @@
-ns('com.project.clm.help').extend({
+ns('com.project.clm.help').modify({
 
     initialize : function (modes) {
         var helpBtn = $('.btn-help');
