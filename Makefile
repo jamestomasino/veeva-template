@@ -85,11 +85,7 @@ zip: build
 				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
 			fi; \
 		else \
-			if [[ -f "$$t/exclude.lst" ]]; then \
-				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
-			else \
-				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
-			fi; \
+			echo "Skipping project folders."; \
 		fi; \
 		cd ..; \
 	done
