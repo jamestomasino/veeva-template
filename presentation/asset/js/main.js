@@ -1,8 +1,8 @@
-// Override assetReady for initialzation
+/* globals com, org */
 com.project.clm.assetReady = function () {
-    // REQUIRED: Inform framework who we are
-    org.tomasino.clm.setCurrentSlideID("asset");
-
+  'use strict'
+  // REQUIRED: Inform framework who we are
+  org.tomasino.clm.setCurrentSlideID('asset')
 }
 
-/* vi: set shiftwidth=4 tabstop=4 expandtab: */
+/* vi: set shiftwidth=2 tabstop=2 expandtab: */
