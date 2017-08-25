@@ -1,11 +1,13 @@
+SHELL := /bin/bash
+
 PURPLE = $$(tput setaf 93)
 YELLOW = $$(tput setaf 226)
 GREEN = $$(tput setaf 46)
 RED = $$(tput setaf 196)
 RESET = $$(tput sgr0)
 
-ASSETS = $$(find ./presentation -mindepth 1 -maxdepth 1 -type d)
-PROJECT = $$(find ./shared -mindepth 1 -maxdepth 1 -type d)
+ASSETS = $$(find ./presentation -mindepth 1 -maxdepth 1 -type d -not -path 'node_modules')
+PROJECT = $$(find ./shared -mindepth 1 -maxdepth 1 -type d -not -path 'node_modules')
 HTML = $$(find presentation/ -name "*.html")
 JS = $$(find . -name "*.js")
 
@@ -115,6 +117,28 @@ install: update
 		if [[ ! -L "$$x/shared" ]]; then \
 			ln -s ../../shared/ "$$x/shared"; \
 		fi; \
+	done;
+	@for x in $(ASSETS); do \
+		t=$$(basename $$x); \
+		echo "$(GREEN)$$t$(RESET)"; \
+		cd "presentation"; \
+		if [[ -f "$$t/gulpfile.js" ]]; then \
+			cd $$t; \
+			npm install; \
+			cd ..; \
+		fi; \
+		cd ..; \
+	done
+	@for x in $(PROJECT); do \
+		t=$$(basename $$x); \
+		echo "$(GREEN)$$t$(RESET)"; \
+		cd "shared";  \
+		if [[ -f "$$t/gulpfile.js" ]]; then \
+			cd $$t; \
+			npm install; \
+			cd ..; \
+		fi; \
+		cd ..; \
 	done
 
 update:
@@ -128,7 +152,10 @@ clean:
 			unlink "$$x/shared"; \
 		fi \
 	done
+	-find . -type d -name 'dist' -exec rm -rf {} \;
+	-find . -type d -name 'node_modules' -exec rm -rf {} \;
 	rm -rf zip
 	rm -rf *.zip
 
 .PHONY: install build zip update clean serve
+
