@@ -1,0 +1,17 @@
+{
+  "name": "veeva-project-shared",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "del": "latest",
+    "gulp": "latest",
+    "gulp-changed": "^3.1.0",
+    "gulp-clean-css": "latest",
+    "gulp-concat": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-order": "latest",
+    "gulp-plumber": "latest",
+    "gulp-sass": "latest",
+    "gulp-util": "latest"
+  }
+}
