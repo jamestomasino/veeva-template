@@ -63,15 +63,15 @@ zip: build
 		cd "presentation"; \
 		if [ "$(SHARED_RESOURCES_SUPPORT)" = true ] ; then \
 			if [[ -f "$$t/exclude.lst" ]]; then \
-				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*package.json\* -x=\*src\* -x=\*node_modules\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
 			else \
-				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*package.json\* -x=\*src\* -x=\*node_modules\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
 			fi; \
 		else \
 			if [[ -f "$$t/exclude.lst" ]]; then \
-				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* -x=\*package.json\* -x=\*src\* -x=\*node_modules\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
 			else \
-				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+				zip -9 -r -FS -x=\*.DS_Store\* -x=\*.git\* -x=\*package.json\* -x=\*src\* -x=\*node_modules\* "../zip/$$t.zip" "$$t"; \
 			fi; \
 		fi; \
 		cd ..; \
@@ -82,9 +82,9 @@ zip: build
 		cd "shared";  \
 		if [ "$(SHARED_RESOURCES_SUPPORT)" = true ] ; then \
 			if [[ -f "$$t/exclude.lst" ]]; then \
-				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*package.json\* -x=\*src\* -x=\*node_modules\* -x=\*.git\* -x=\*exclude.lst\* -x@"$$t/exclude.lst" "../zip/$$t.zip" "$$t"; \
 			else \
-				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
+				zip -9 -r -FS -x=\*shared\* -x=\*.DS_Store\* -x=\*package.json\* -x=\*src\* -x=\*node_modules\* -x=\*.git\* "../zip/$$t.zip" "$$t"; \
 			fi; \
 		else \
 			echo "Skipping project folders."; \
@@ -158,4 +158,3 @@ clean:
 	rm -rf *.zip
 
 .PHONY: install build zip update clean serve
-
