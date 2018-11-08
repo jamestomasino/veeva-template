@@ -26,7 +26,7 @@ build:
 		fi; \
 		if [[ -f "$$t/gulpfile.js" ]]; then \
 			cd $$t; \
-			gulp; \
+			yarn run gulp; \
 			cd ..; \
 		fi; \
 		cd ..; \
@@ -42,7 +42,7 @@ build:
 		fi; \
 		if [[ -f "$$t/gulpfile.js" ]]; then \
 			cd $$t; \
-			gulp; \
+			yarn run gulp; \
 			cd ..; \
 		fi; \
 		cd ..; \
@@ -124,7 +124,7 @@ install: update
 		cd "presentation"; \
 		if [[ -f "$$t/gulpfile.js" ]]; then \
 			cd $$t; \
-			npm install; \
+			yarn; \
 			cd ..; \
 		fi; \
 		cd ..; \
@@ -135,7 +135,7 @@ install: update
 		cd "shared";  \
 		if [[ -f "$$t/gulpfile.js" ]]; then \
 			cd $$t; \
-			npm install; \
+			yarn; \
 			cd ..; \
 		fi; \
 		cd ..; \
