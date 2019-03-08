@@ -89,7 +89,7 @@ ns('com.project.clm').modify({
   cycleISI: function () {
     var isiScroll = $('.main .isi')
     isiScroll.removeClass('s0 s1 s2 s3 s4 s5 s6 s7')
-    com.project.clm._currentISI ++
+    com.project.clm._currentISI++
     if (com.project.clm._currentISI > com.project.clm._maxISI) {
       com.project.clm._currentISI = 0
     }

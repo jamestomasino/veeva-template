@@ -4,59 +4,60 @@
 @import "footer";
 
 body {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1024px;
-    height: 768px;
-    overflow: hidden;
-    background-image: url("../images/background.png");
-    background-size: 1024px 768px;
-    background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
+  background-image: url("../images/background.png");
+  background-size: 1024px 768px;
+  background-repeat: no-repeat;
 }
 
-sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sup {
-    top: -0.5em;
+  top: -0.5em;
 }
 
 sub {
-    bottom: -0.25em;
+  bottom: -0.25em;
 }
 
 /* Top Logo */
 .logo {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 200px;
-    height: 125px;
-    z-index: 1002;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px;
+  height: 125px;
+  z-index: 1002;
 }
 
 /* Modal Generic Handler */
 .modal {
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    z-index: 10000;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  z-index: 10000;
 
-    &.active {
-        display: block;
-        animation-duration: 0.7s;
-        animation-name: fadeInFromNone;
-        animation-fill-mode: forwards;
-    }
+  &.active {
+    display: block;
+    animation-duration: 0.7s;
+    animation-name: fadeInFromNone;
+    animation-fill-mode: forwards;
+  }
 }
 
-/* vi: set shiftwidth=4 tabstop=4 expandtab: */
+/* vi: set shiftwidth=2 tabstop=2 expandtab: */

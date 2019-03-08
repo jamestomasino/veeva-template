@@ -1,93 +1,93 @@
 /* ISI Scroll */
 .main .isi {
-    position: absolute;
-    top: 609px;
-    right: 3px;
-    width: 750px;
-    height: 96px;
-    background-image: url("../images/isi-scroll.png");
-    background-size: 750px 920px;
-    background-repeat: no-repeat;
-    overflow: hidden;
+  position: absolute;
+  top: 609px;
+  right: 3px;
+  width: 750px;
+  height: 96px;
+  background-image: url("../images/isi-scroll.png");
+  background-size: 750px 920px;
+  background-repeat: no-repeat;
+  overflow: hidden;
 
-    &.s0 {
-        background-position: 0 0;
-    }
+  &.s0 {
+    background-position: 0 0;
+  }
 
-    &.s1 {
-        background-position: 0 -115px;
-    }
+  &.s1 {
+    background-position: 0 -115px;
+  }
 
-    &.s2 {
-        background-position: 0 -230px;
-    }
+  &.s2 {
+    background-position: 0 -230px;
+  }
 
-    &.s3 {
-        background-position: 0 -345px;
-    }
+  &.s3 {
+    background-position: 0 -345px;
+  }
 
-    &.s4 {
-        background-position: 0 -460px;
-    }
+  &.s4 {
+    background-position: 0 -460px;
+  }
 
-    &.s5 {
-        background-position: 0 -575px;
-    }
+  &.s5 {
+    background-position: 0 -575px;
+  }
 
-    &.s6 {
-        background-position: 0 -690px;
-    }
+  &.s6 {
+    background-position: 0 -690px;
+  }
 
-    &.s7 {
-        background-position: 0 -805px;
-    }
+  &.s7 {
+    background-position: 0 -805px;
+  }
 }
 
 /* Full ISI Slide-up */
 .full-isi {
+  position: absolute;
+  top: 1024px;
+  left: 0;
+  width: 1024px;
+  height: 768px;
+  background-image: url("../images/isi.png");
+  background-size: 1024px 768px;
+  background-repeat: no-repeat;
+  z-index: 5000;
+  transition: transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+
+  &.active {
+    -webkit-transform: translate(0, -1024px);
+    transform: translate(0, -1024px);
+  }
+
+  .btn-text-pi {
     position: absolute;
-    top: 1024px;
-    left: 0;
-    width: 1024px;
-    height: 768px;
-    background-image: url("../images/isi.png");
-    background-size: 1024px 768px;
-    background-repeat: no-repeat;
-    z-index: 5000;
-    transition: transform 0.5s ease-in-out;
-    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    bottom: 165px;
+    left: 626px;
+    width: 176px;
+    height: 33px;
+  }
 
-    &.active {
-      -webkit-transform: translate(0, -1024px);
-      transform: translate(0,-1024px);
-    }
+  .job-number {
+    position: absolute;
+    bottom: 32px;
+    left: 540px;
+    width: 176px;
+    height: 17px;
+    font-family: AvenirNextCondensed-Regular;
+    font-size: 12px;
+    color: #000;
+  }
 
-    .btn-text-pi {
-        position: absolute;
-        bottom: 165px;
-        left: 626px;
-        width: 176px;
-        height: 33px;
-    }
-
-    .job-number {
-        position: absolute;
-        bottom: 32px;
-        left: 540px;
-        width: 176px;
-        height: 17px;
-        font-family: AvenirNextCondensed-Regular;
-        font-size: 12px;
-        color: #000;
-    }
-
-    .close {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        width: 66px;
-        height: 66px;
-    }
+  .close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 66px;
+    height: 66px;
+  }
 }
 
-/* vi: set shiftwidth=4 tabstop=4 expandtab: */
+/* vi: set shiftwidth=2 tabstop=2 expandtab: */

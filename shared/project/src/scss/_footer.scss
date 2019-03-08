@@ -1,47 +1,47 @@
 .footer {
-    .btn-references {
-        position: absolute;
-        bottom: 0;
-        left: 628px;
-        width: 110px;
-        height: 37px;
+  .btn-references {
+    position: absolute;
+    bottom: 0;
+    left: 628px;
+    width: 110px;
+    height: 37px;
+  }
+  .btn-footnotes {
+    position: absolute;
+    bottom: 0;
+    left: 739px;
+    width: 101px;
+    height: 36px;
+    &.active {
+      background-image: url("../images/footnotes-active.png");
+      background-size: 102px 36px;
+      background-repeat: no-repeat;
     }
-    .btn-footnotes {
-        position: absolute;
-        bottom: 0;
-        left: 739px;
-        width: 101px;
-        height: 36px;
-        &.active {
-            background-image: url("../images/footnotes-active.png");
-            background-size: 102px 36px;
-            background-repeat: no-repeat;
-        }
-    }
+  }
 
-    .btn-isi {
-        position: absolute;
-        bottom: 0;
-        left: 842px;
-        width: 55px;
-        height: 37px;
-    }
+  .btn-isi {
+    position: absolute;
+    bottom: 0;
+    left: 842px;
+    width: 55px;
+    height: 37px;
+  }
 
-    .btn-pi {
-        position: absolute;
-        bottom: 0;
-        left: 898px;
-        width: 76px;
-        height: 37px;
-    }
+  .btn-pi {
+    position: absolute;
+    bottom: 0;
+    left: 898px;
+    width: 76px;
+    height: 37px;
+  }
 
-    .btn-text-pi {
-        position: absolute;
-        bottom: 36px;
-        left: 448px;
-        width: 176px;
-        height: 33px;
-    }
+  .btn-text-pi {
+    position: absolute;
+    bottom: 36px;
+    left: 448px;
+    width: 176px;
+    height: 33px;
+  }
 }
 
-/* vi: set shiftwidth=4 tabstop=4 expandtab: */
+/* vi: set shiftwidth=2 tabstop=2 expandtab: */
