@@ -16,7 +16,7 @@ function bytesToSize (bytes) {
 
 // PROCESS CSS
 gulp.task('css', function () {
-  gulp.src('./src/scss/project.scss')
+  return gulp.src('./src/scss/project.scss')
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(minifyCSS({ debug: true }, function (details) {
@@ -40,7 +40,7 @@ gulp.task('css', function () {
 
 // PROCESS JS
 gulp.task('js', function () {
-  gulp.src('./src/js/**/*')
+  return gulp.src('./src/js/**/*')
     .pipe(plumber())
     .pipe(order([
       'jquery.touchSwipe.min.js',
@@ -56,7 +56,7 @@ gulp.task('js', function () {
 
 // COMPRESS IMAGES
 gulp.task('imagemin', function () {
-  gulp.src('./src/images/**/')
+  return gulp.src('./src/images/**/')
     .pipe(plumber())
     .pipe(changed('./dist/images'))
     .pipe(imagemin([
