@@ -71,9 +71,9 @@ gulp.task('imagemin', function () {
 })
 
 gulp.task('watch', function () {
-  gulp.watch('./src/scss/**/*', ['css'])
-  gulp.watch('./src/js/**/*', ['js'])
-  gulp.watch('./src/images/**/', ['imagemin'])
+  gulp.watch('./src/scss/**/*', gulp.parallel('css'))
+  gulp.watch('./src/js/**/*', gulp.parallel('js'))
+  gulp.watch('./src/images/**/', gulp.parallel('imagemin'))
 })
 
 gulp.task('default', gulp.parallel('css', 'js', 'imagemin'))
