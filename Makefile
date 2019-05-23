@@ -11,6 +11,10 @@ PROJECT = $$(find ./shared -mindepth 1 -maxdepth 1 -type d -not -path 'node_modu
 HTML = $$(find presentation/ -name "*.html")
 JS = $$(find . -name "*.js")
 
+VEEVAFTP := ""
+VEEVAUSER := ""
+VEEVAPASS := ""
+
 SHARED_RESOURCES_SUPPORT=true
 
 build:
@@ -157,4 +161,15 @@ clean:
 	rm -rf zip
 	rm -rf *.zip
 
-.PHONY: install build zip update clean serve
+ftp: zip
+	@printf   "$(GREEN)--- ftp ------------------------------------------------\n$(RESET)"
+	@for x in zip/*; do \
+		printf "Uploading: %s\\n" "$$x"; \
+		curl --progress -u $(VEEVAUSER):$(VEEVAPASS) -T "$$x" $(VEEVAFTP); \
+	done
+	@for c in ctl/*; do \
+		printf "Uploading: %s\\n" "$$c"; \
+		curl --progress -u $(VEEVAUSER):$(VEEVAPASS) -T "$$c" $(VEEVAFTP)/ctlfile/; \
+	done
+
+.PHONY: install build zip update clean serve ftp
