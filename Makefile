@@ -161,7 +161,34 @@ clean:
 	rm -rf zip
 	rm -rf *.zip
 
-ftp: zip
+ctl:
+	@if [[ ! -d "ctl" ]]; then \
+		mkdir ctl; \
+	else \
+		rm ctl/* ; \
+	fi
+	@for x in $(ASSETS); do \
+		t=$$(basename $$x); \
+		ctlFile="ctl/$${t}.ctl"; \
+		printf "USER=%s\\n" "$(VEEVAUSER)" > "$$ctlFile"; \
+		printf "PASSWORD=%s\\n"  "$(VEEVAPASS)" >> "$$ctlFile"; \
+		printf "FILENAME=%s\\n" "$${t}.zip" >> "$$ctlFile"; \
+		printf "CLM_ID_vod__c=%s\\n" "$${t}" >> "$$ctlFile"; \
+		printf "Name=%s\\n" "$${t}" >> "$$ctlFile"; \
+		printf "Slide_Version_vod__c==v1.0" >> "$$ctlFile"; \
+	done
+	@for x in $(PROJECT); do \
+		t=$$(basename $$x); \
+		ctlFile="ctl/$${t}.ctl"; \
+		printf "USER=%s\\n" "$(VEEVAUSER)" > "$$ctlFile"; \
+		printf "PASSWORD=%s\\n"  "$(VEEVAPASS)" >> "$$ctlFile"; \
+		printf "FILENAME=%s\\n" "$${t}.zip" >> "$$ctlFile"; \
+		printf "CLM_ID_vod__c=%s\\n" "$${t}" >> "$$ctlFile"; \
+		printf "Name=%s\\n" "$${t}" >> "$$ctlFile"; \
+		printf "Slide_Version_vod__c==v1.0" >> "$$ctlFile"; \
+	done
+
+ftp: zip ctl
 	@printf   "$(GREEN)--- ftp ------------------------------------------------\n$(RESET)"
 	@for x in zip/*; do \
 		printf "Uploading: %s\\n" "$$x"; \
@@ -172,4 +199,4 @@ ftp: zip
 		curl --progress -u $(VEEVAUSER):$(VEEVAPASS) -T "$$c" $(VEEVAFTP)/ctlfile/; \
 	done
 
-.PHONY: install build zip update clean serve ftp
+.PHONY: install build zip update clean serve ftp ctl
