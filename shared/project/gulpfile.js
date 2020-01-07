@@ -56,7 +56,7 @@ gulp.task('js', function () {
 
 // COMPRESS IMAGES
 gulp.task('imagemin', function () {
-  return gulp.src('./src/images/**/')
+  return gulp.src('./src/images/**/*')
     .pipe(plumber())
     .pipe(changed('./dist/images'))
     .pipe(imagemin([
