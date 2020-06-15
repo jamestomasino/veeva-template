@@ -113,7 +113,7 @@ install: update
 		t=$$(basename $$x); \
 		cd "shared/$$t"; \
 		if [[ ! -d "framework" ]]; then \
-			git submodule add https://jamestomasino@bitbucket.org/jamestomasino/veeva-framework.git framework; \
+			git submodule add https://github.com/jamestomasino/veeva-framework.git framework; \
 		fi; \
 		cd ../..; \
 	done;
