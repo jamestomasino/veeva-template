@@ -103,10 +103,10 @@ install: update
 		projectname=$${projectname:-sample-project}; \
 		mv "shared/project" "shared/$$projectname"; \
 		for x in $(HTML); do \
-			sed -i'' "s/shared\/project/shared\/$$projectname/g" "$$x"; \
+			sed -i.bak "s/shared\/project/shared\/$$projectname/g" "$$x"; rm "$${x}.bak"; \
 		done; \
 		for x in $(JS); do \
-			sed -i'' "s/com\.project/com\.$${projectname//-}/g" "$$x"; \
+			sed -i.bak "s/com\.project/com\.$${projectname//-}/g" "$$x"; rm "$${x}.bak"; \
 		done; \
 	fi;
 	@for x in $(PROJECT); do \
