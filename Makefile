@@ -101,8 +101,8 @@ install: update
 	@if [[ -d "shared/project" ]]; then \
 		read -p "$(YELLOW)Project Name [sample-project]:$(RESET) " projectname; \
 		projectname=$${projectname:-sample-project}; \
-		mv "shared/project/project-thumb.jpg" "shared/project/$$projectname-thumb.jpg";
-		mv "shared/project/project.html" "shared/project/$$projectname.html";
+		mv "shared/project/project-thumb.jpg" "shared/project/$$projectname-thumb.jpg"; \
+		mv "shared/project/project.html" "shared/project/$$projectname.html"; \
 		mv "shared/project" "shared/$$projectname"; \
 		for x in $(HTML); do \
 			sed -i.bak "s/shared\/project/shared\/$$projectname/g" "$$x"; rm "$${x}.bak"; \
