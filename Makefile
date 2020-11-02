@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+SHELL := /usr/bin/env bash
 
 PURPLE = $$(tput setaf 93)
 YELLOW = $$(tput setaf 226)
