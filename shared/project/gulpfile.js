@@ -3,7 +3,7 @@ let concat = require('gulp-concat')
 let minifyCSS = require('gulp-clean-css')
 let order = require('gulp-order')
 let plumber = require('gulp-plumber')
-let sass = require('gulp-sass')
+let sass = require('gulp-sass')(require('sass'))
 let imagemin = require('gulp-imagemin')
 let changed = require('gulp-changed')
 
@@ -61,7 +61,6 @@ gulp.task('imagemin', function () {
     .pipe(changed('./dist/images'))
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
-      imagemin.jpegtran({ progressive: true }),
       imagemin.optipng({ optimizationLevel: 5 }),
       imagemin.svgo({ plugins: [{ removeViewBox: true }] })
     ], {
