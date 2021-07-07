@@ -18,6 +18,7 @@
     "gulp-order": "latest",
     "gulp-plumber": "latest",
     "gulp-sass": "latest",
-    "gulp-util": "latest"
+    "gulp-util": "latest",
+    "sass": "^1.35.1"
   }
 }
